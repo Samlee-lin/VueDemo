@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on指令</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-text="message"></h2>
+        <input type="button" value="v-on指令（单击）" v-on:click="doit">
+        <input type="button" value="v-on指令（单击）" @click="doit">
+        <input type="button" value="v-on指令（双击）" @dblclick="doit">
+        <!-- 修改数据 -->
+        <h2 v-on:click="change">{{flower}}</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:"v-on指令",
+                flower:"梅花"
+            },
+            methods:{
+                doit:function() {
+                    alert("执行该函数！");
+                },
+                change:function(){
+                    this.flower+="好漂亮！"
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

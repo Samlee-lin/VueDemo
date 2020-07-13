@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <style type="text/css">
+        .active{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主体 -->
+    <div id="app">
+        <img v-bind:src="imgsrc" alt="">
+        <br>
+        <img :src="imgsrc" :title="imgtitle+'!!!'" :class="ifactive?'active':''" @click="clickifactive">
+        <br>
+        <img :src="imgsrc" :title="imgtitle+'!!!'" :class="{active:ifactive}" @click="clickifactive">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgsrc:"img/img1.png",
+                imgtitle:"绑定的图片是这个",
+                ifactive:false
+            },
+            methods:{
+                clickifactive:function(){
+                    this.ifactive = !this.ifactive;
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

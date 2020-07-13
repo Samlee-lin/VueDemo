@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换练习</title>
+</head>
+<body>
+    <div id="app">
+        <h2>图片切换(样式暂未调)</h2>
+        <!-- <a href="" @click="previmg" v-show="index!=0"><</a> -->
+        <input type="button" @click="previmg" v-show="index!=0" value="上一张">
+        <img :src="imgsArr[index]" alt="">
+        <!-- <a href="" @click="nextimg" v-show="nextbtnshow">></a> -->
+        <input type="button" @click="nextimg" v-show="index<imgsArr.length-1" value="下一张">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                // 定义图片数组
+                imgsArr:["img/swiper1.jpg","img/swiper2.jpg","img/swiper3.jpg"],
+                // 定义索引
+                index:0,
+
+            },
+            methods:{
+                previmg:function(){                   
+                    this.index--;
+                },
+                nextimg:function(){
+                    this.index++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本练习</title>
+    <style type="text/css">
+        .listli button{
+            display: none;
+        }
+        .listli:hover button{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>记事本练习(输入内容点击回车增加事项)</h2>
+        <input autofocus="autofocus" type="text" placeholder="请输入事项" v-model="inputval" @keyup.enter="additem"><br>
+        <ul>
+            <li class="listli" v-for="(item,index) in itemlist">{{index+1}}.  {{item}} <button @click="removelist(index)">删除本条事项</button></li>
+        </ul>
+        <div class="bottom" v-show="itemlist.length>0">
+            <span v-text="itemlist.length+'条事项'"></span><button @click="removeall">清除所有</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app", 
+            data:{
+                inputval:"",
+                itemlist:["上英语课","上数学课","上语文课"],
+
+            },
+            methods:{
+                additem:function(){
+                    if(this.inputval == ""){
+                        alert("不能添加空数据");
+                    }else{
+                    this.itemlist.push(this.inputval);
+                    this.inputval="";
+                    }
+                },
+                removelist:function(idx){
+                    this.itemlist.splice(idx,1);
+                },
+                removeall:function(){
+                    this.itemlist.splice(0,this.itemlist.length);
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

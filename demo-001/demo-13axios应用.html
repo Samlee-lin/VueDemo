@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios的基本使用</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" class="get" value="get请求">
+        <input type="button" class="post" value="post请求">
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        /* 随机获取笑话的接口
+        请求地址：https://autumnfish.cn/api/joke/list
+        请求方法：get
+        请求参数：num
+        参数名 参数说明 备注
+        num 笑话条数 类型为数字 */
+        document.querySelector(".get").onclick = function(){
+            axios.get("https://autumnfish.cn/api/joke/list?num=2")
+            .then(function(response){
+                console.log(response);
+            },function(err){
+                console.log(err);
+            })
+        }
+
+        /* 验证用户名是否可用
+        请求地址：https://autumnfish.cn/api/user/check
+        请求方法：post
+        请求参数：username
+        参数名 参数说明 备注
+        username 用户名 不能为空 */
+        document.querySelector(".post").onclick = function(){
+            axios.post("https://autumnfish.cn/api/user/reg",{username:"jack"})
+            .then(function(response){
+                console.log(response);
+            },function(err){
+                console.log(err);
+            })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on补充</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="点击执行doit函数" @click="doit(666,'doit执行了')">
+        <input type="text" @keyup.enter="saysth">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+                doit:function(p1,p2){
+                    console.log("执行doit函数");
+                    console.log(p1);
+                    console.log(p2);
+                },
+                saysth:function(){
+                    alert("说点什么吧！");
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我想知道天气！</title>
+    <link rel="stylesheet" href="css/demo-15.css">
+</head>
+<body> 
+	<div class="cover">
+    <div id="app">
+        <!-- 标题 -->
+        <div class="title"><img class="logo" mode="widthFix" src="img/logo.png" alt="logo"></div>
+        <!-- 搜索区域 -->
+        <div class="serch">
+            <input class="serch_city" type="text" placeholder="请输入查询的城市" v-model="city" @keyup.enter="serchWeather">
+            <input class="serch_btn" type="button" value="搜索" @click="serchWeather">
+        </div>
+        <!-- 热门搜索城市 -->
+        <div class="hotcity">
+            <ul>
+                <li v-for="(item,index) in hotcity"><a href="javascript:;" @click="selectcity(item)">{{ item }}</a></li>
+            </ul>
+        </div>
+        <!-- 天气展示区 -->
+        <div class="weather" v-show="weatherlist.length>0">
+            <p class="weathercity">当前查看天气的城市：<b>{{ city }}</b></p>
+            <ul>
+                <li v-for="(item,index) in weatherlist">
+                    <div class="weather_inf">{{ item.type }}</div>
+                    <div class="weather_clound">{{ item.fengxiang }}</div>
+                    <div class="weather_temp">
+                        <span>{{ item.low }}</span>~<span>{{ item.high }}</span>
+                    </div>
+                    <div class="weather_date">{{ item.date }}</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="loading" v-if="ifloading">Loading&#8230;</div>    
+    </div>
+	
+	</div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./js/demo-15.js"></script>
+</body>
+</html>

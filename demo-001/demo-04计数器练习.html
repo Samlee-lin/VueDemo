@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器练习</title>  
+    <style type="text/css">
+
+        #app button{
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            background: #9999991c;
+            color: red;
+            font-size: 18px;
+        }
+        #app span{
+            display: inline-block;
+            width: 100px;
+            height: 48px;
+            color: red;
+            text-align: center;
+            border: 2px solid #666;
+            background: #fff;
+            line-height: 45px;
+            border-radius: 10px;
+            color: #000;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2 v-text="title"></h2>
+        <button @click="minnum">-</button>
+        <span>{{ num }}</span>
+        <button @click="addnum">+</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                title:"计数器",
+                num:0
+            },
+            methods:{
+                minnum:function(){                   
+                    if(this.num>0){
+                        this.num-=1;
+                    }else{
+                        alert("最小值为0");
+                    }
+                },
+                addnum:function(){
+                    if(this.num<10){
+                        this.num+=1;
+                    }else{
+                        alert("最大值为10");
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if</title>
+</head>
+<body>
+    <!-- html主体 -->
+    <div id="app">
+        <h2>V-if 根据表达值的真假，切换元素的显示或隐藏（操作dom元素），控制该dom节点是否存在与否</h2>
+        <p v-if=false>v-if是否显示</p>
+        <p v-if="ifshow">v-if是否显示</p>
+
+        <!-- 使用函数控制 -->
+        <input type="button" value="点击切换" @click="clicktoifshow">
+        <p v-if="buttonshow">使用函数控制是否显示</p>
+        <input type="button" value="升高温度" @click="changetemp"><span>当前温度为：{{temp}}</span>
+        <p v-if="temp>30">超过温度了！</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                ifshow:true,
+                buttonshow:true,
+                temp:28
+            },
+            methods:{
+                clicktoifshow:function(){
+                    this.buttonshow = !this.buttonshow;
+                },
+                changetemp:function(){
+                    this.temp++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data对象</title>
+</head>
+<body>
+    
+    <div id="app">
+        
+        <h2>{{ message }}</h2>
+        <div>姓名：{{ person.name }}，年龄：{{ person.age}}，职业：{{ person.job }}</div>
+        <ul>
+            <li v-for="add in adds">{{ add.text }}</li>
+        </ul>   
+        <h3 v-text="message"></h3>
+        <h4 v-text="message+'表达式加上的'"></h4>
+        <p v-html="content"></p>
+        <p v-html="content2"></p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el : '#app',
+            data : {
+                message : '这是data对象的实例',
+                person : {
+                    name : '张三',
+                    age : '23',
+                    job : '程序员'
+                },
+                adds:[{text:'广州'},{text:'深圳'},{text:'揭阳'}],
+                content:"<span style='color:red'>测试v-html</span>",
+                content2:"<a href='https://www.baidu.com'>跳转链接</a>"
+            },
+            
+        })
+    </script>
+</body>
+</html>
